@@ -1,0 +1,42 @@
+generated: '2026-08-26'
+method: searched
+source: https://github.com/RedDrip7/qax-ti-mcp — the 版本信息 (revision history) table
+  of the QAX Threat Intelligence MCP Service Configuration Manual
+scheme: semver
+scope: 'QAX Threat Intelligence MCP Service configuration manual. This is the only
+  dated, versioned release record QAX publishes for its public developer surface;
+  the REST threat-intelligence API itself has no published changelog.'
+current_version: 2.0.0
+current_version_date: '2025-09-03'
+entries:
+- version: 2.0.0
+  date: '2025-09-03'
+  breaking: false
+  additions:
+  - Threat-actor interface documentation added (增加威胁行为体接口说明), covering query_threat_actor_by_ioc
+    and query_threat_actor_list.
+  highlights: Documents the 800+ global threat-actor profile corpus and multi-criteria
+    actor search.
+  author: 张思怡
+  reviewer: 白敏
+- version: 1.0.1
+  date: '2025-05-13'
+  breaking: false
+  additions:
+  - Recommended access method added (增加推荐的接入方式) — Streamable HTTP promoted over
+    SSE, with SSE marked no longer maintained.
+  highlights: Same date as the QAX newsroom launch announcement for the Threat Intelligence
+    MCP service.
+  author: 高健涛
+  reviewer: 白敏
+- version: 1.0.0
+  date: '2025-04-29'
+  breaking: false
+  additions:
+  - Initial release of the configuration manual (文档初版发布).
+  author: 高健涛
+  reviewer: 白敏
+gaps:
+- No dated changelog is published for the REST threat-intelligence API on webapi.ti.qianxin.com.
+- The company newsroom (https://en.qianxin.com/news/list, https://www.qianxin.com/news/list)
+  carries product announcements but is not a structured API changelog.

@@ -1,0 +1,53 @@
+generated: '2026-08-26'
+method: searched
+source: 'Queried registry.npmjs.org, pypi.org/pypi/<pkg>/json, and searched the QAX
+  docs and the RedDrip7 GitHub account on 2026-08-26 for a first-party client library.'
+package_count: 0
+official_sdk_count: 0
+packages: []
+note: 'QAX publishes no first-party client SDK for the Threat Intelligence API on
+  any public package registry. The documented integration paths are a raw HTTPS GET
+  with an `Api-Key` header (curl is the example the provider gives) and the hosted
+  MCP server, which is a remote endpoint rather than an installable package — the
+  configuration manual explicitly records stdio as ❌不支持 (not supported), so there
+  is deliberately no npm/PyPI package to install. No SDKs pointer is emitted.'
+registry_probes:
+- registry: npm
+  queried:
+  - qax-ti-mcp
+  - qianxin-ti
+  - qianxin
+  - '@qianxin/ti-sdk'
+  - qax-ti
+  result: all 404
+  version: null
+  published: null
+- registry: pypi
+  queried:
+  - qianxin
+  - qax-ti
+  - qianxin-ti
+  result: all 404
+  version: null
+  published: null
+- registry: pypi
+  queried:
+  - qax
+  result: exists but NOT first-party
+  version: 0.4.1
+  published: null
+  rejected: true
+  rejection_reason: 'pypi.org/project/qax is "A JAX transform for writing things which
+    pretend to be tensors" by Davis Yoshida (dyoshida@ttic.edu) — an unrelated machine-learning
+    library that merely shares the QAX acronym. Not saved.'
+first_party_repos:
+- url: https://github.com/RedDrip7/qax-ti-mcp
+  status: 200
+  kind: documentation
+  official: true
+  note: 'The QAX Threat Intelligence MCP configuration manual, authored and reviewed
+    by named QAX Threat Intelligence Center staff. Documentation only — it ships no
+    installable code, so it is recorded here as a first-party repository rather than
+    as a package.'
+  version: 2.0.0
+  published: '2025-09-03'

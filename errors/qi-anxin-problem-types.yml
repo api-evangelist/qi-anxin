@@ -1,0 +1,48 @@
+generated: '2026-08-26'
+method: probed
+source: live unauthenticated probes of https://webapi.ti.qianxin.com/ and https://ti.qianxin.com/api/v2/compromise
+  on 2026-08-26; no published error reference was found on the provider's docs host.
+format: vendor-json
+rfc9457: false
+content_type: application/json; charset=utf-8
+envelope:
+  shape: 'A flat JSON object. The observed failure envelope carries a single human-readable
+    `message` string. No machine-readable error code, type URI, trace id or remediation
+    link is present in the observed responses.'
+  fields:
+  - name: message
+    type: string
+    required: true
+    description: Human-readable failure reason.
+  absent:
+  - code
+  - type
+  - title
+  - detail
+  - instance
+  - request_id
+problem_types:
+- id: no-api-key
+  http_status: 401
+  message: No API key found in request
+  observed_at:
+  - url: https://webapi.ti.qianxin.com/
+    status: 401
+    date: '2026-08-26'
+  - url: https://ti.qianxin.com/api/v2/compromise?param=8.8.8.8
+    status: 401
+    date: '2026-08-26'
+  meaning: The request carried no `Api-Key` header.
+  remediation: Supply the `Api-Key` header issued by the QAX Threat Intelligence Center
+    console.
+coverage_note: 'Only the unauthenticated failure path can be observed without a key.
+  Success responses, quota-exhaustion responses and validation errors are documented
+  inside the JS-rendered help section at https://ti.qianxin.com/help, which serves
+  an SPA shell to non-browser clients, so they could not be captured. This catalog
+  is therefore deliberately partial rather than fabricated.'
+gaps:
+- The provider publishes no consolidated error-code reference reachable as machine-readable
+  text.
+- Responses are not RFC 9457 application/problem+json.
+- No correlation/request identifier is returned on the REST surface (the MCP surface
+  does track Mcp-Session-Id).

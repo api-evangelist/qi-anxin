@@ -1,0 +1,77 @@
+generated: '2026-08-26'
+method: searched
+source: https://ti.qianxin.com/help/?path=ip-illustration30, https://github.com/RedDrip7/qax-ti-mcp,
+  and live probes of https://webapi.ti.qianxin.com/ on 2026-08-26
+summary: 'Cross-cutting runtime semantics for the QAX Threat Intelligence surfaces.
+  The REST API is a read-only lookup API: a single indicator is supplied on the query
+  string and a JSON verdict comes back. That shape makes idempotency, dry-run and
+  reversibility structurally not-applicable rather than missing.'
+auth:
+  style: api-key
+  header: Api-Key
+  detail: See authentication/qi-anxin-authentication.yml
+request_style:
+  protocol: HTTPS
+  http_method: GET
+  parameter_convention: 'The indicator under query is passed as a single `param` query-string
+    value, e.g. /ip/v3/reputation?param=114.102.39.81. Interface version is carried
+    in the path segment (v2, v3).'
+  content_negotiation: Responses are application/json; charset=utf-8. No Accept-based
+    negotiation is documented.
+versioning:
+  style: uri-path
+  observed:
+  - https://webapi.ti.qianxin.com/ip/v3/reputation
+  - https://ti.qianxin.com/api/v2/compromise
+  note: Version is a path segment. Interfaces are versioned independently of one another
+    (IP reputation is at v3 while the compromise-detection interface is at v2); there
+    is no single global API version.
+pagination:
+  supported: unknown
+  note: Single-indicator lookups return one object. Batch behaviour on the MCP surface
+    is capped at 5 items per call and is not paginated. No pagination parameters are
+    documented on the public REST surface.
+error_envelope:
+  shape: '{"message": "<string>"}'
+  rfc9457: false
+  detail: See errors/qi-anxin-problem-types.yml
+rate_limit_signalling:
+  headers_documented: false
+  detail: See rate-limits/qi-anxin-rate-limits.yml
+request_id_tracing:
+  rest: false
+  mcp: true
+  mcp_detail: The Streamable HTTP MCP transport automatically associates an `Mcp-Session-Id`
+    per session. No correlation identifier is documented or observed on the REST surface.
+metadata_and_expansion:
+  sparse_fields: false
+  field_expansion: false
+  note: Not offered on this surface.
+idempotency:
+  supported: na
+  reason: The public REST surface is read-only (HTTP GET lookups only) and the MCP
+    tool set is entirely query_* / batch_query_* reads. There is no write surface,
+    so an idempotency key has nothing to protect. No Idempotency pointer is emitted
+    — the API does not need one.
+dry_run_mode:
+  supported: na
+  reason: Read-only surface; there is no state-changing action to rehearse.
+reversibility:
+  grade: na
+  reason: 'The public QAX Threat Intelligence API and MCP server expose no write, mutate
+    or delete operation. Every documented operation is a lookup that returns intelligence
+    about an indicator, so no action taken through this API can require reversal.
+    Recorded as not-applicable rather than zero, per the pipeline rule for read-only
+    APIs.'
+  write_surfaces: []
+  evidence:
+  - url: https://ti.qianxin.com/help/?path=ip-illustration30
+    note: IP reputation interface is documented as an HTTP GET returning a JSON object.
+  - url: https://github.com/RedDrip7/qax-ti-mcp
+    note: All 16 published MCP tools are named query_* / batch_query_* and are described
+      as retrieval scenarios.
+cross_links:
+  authentication: authentication/qi-anxin-authentication.yml
+  errors: errors/qi-anxin-problem-types.yml
+  rate_limits: rate-limits/qi-anxin-rate-limits.yml
+  lifecycle: lifecycle/qi-anxin-lifecycle.yml

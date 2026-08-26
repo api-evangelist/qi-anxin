@@ -1,0 +1,120 @@
+generated: '2026-08-26'
+method: searched
+source: https://github.com/RedDrip7/qax-ti-mcp — "奇安信威胁情报MCP服务配置手册 v2.0.0"
+  (QAX Threat Intelligence MCP Service Configuration Manual, rev 2025-09-03), corroborated
+  by the QAX newsroom announcement https://www.qianxin.com/news/detail?news_id=13436
+  (2025-05-13).
+name: QAX Threat Intelligence MCP Service
+provider: Qi An Xin Technology Group (QAX)
+status: published
+ownership_note: 'The MCP endpoints are served from mcp.ti.qianxin.com, a subdomain
+  of the company''s own qianxin.com domain, and the launch was announced on QAX''s
+  own newsroom. The configuration manual is published on the GitHub account of RedDrip
+  (红雨滴), the public research brand of the QAX Threat Intelligence Center, and is
+  authored/reviewed by named QAX Threat Intelligence Center staff. First-party.'
+deployment:
+  mode: remote
+  endpoint: https://mcp.ti.qianxin.com/ti-stream-mcp
+  auth: api-key
+  verified: searched
+transports:
+- protocol: Streamable HTTP
+  url: https://mcp.ti.qianxin.com/ti-stream-mcp
+  supported: true
+  recommended: true
+  note: Provider states Streamable HTTP is preferred for performance and stability;
+    session tracking via the Mcp-Session-Id header.
+- protocol: SSE
+  url: https://mcp.ti.qianxin.com/ti-mcp/sse
+  supported: true
+  recommended: false
+  deprecated: true
+  note: Published as 支持-不再维护 (supported but no longer maintained). Provider asks
+    that SSE be requested explicitly at API-key application time.
+- protocol: stdio
+  supported: false
+  note: Explicitly documented as NOT supported. There is no local stdio package for
+    this server.
+authentication:
+  style: api-key
+  location: header
+  header: Api-Key
+  issuance: 'Keys are requested from the QAX threat-intelligence platform administrators
+    at ti_support@qianxin.com and managed in the QAX console.'
+  ip_allowlist: Optional IP allow-list binding is available on separate application.
+  transport_security: TLS
+live_probe:
+  attempted: '2026-08-26'
+  url: https://mcp.ti.qianxin.com/ti-stream-mcp
+  method: 'POST {"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+  http_status: '<no response>'
+  note: Connection timed out from the probing network (US) after 15s; single attempt,
+    not retried per pipeline probe-bounding rules. The tool list below is therefore
+    taken verbatim from the provider''s published configuration manual, not from live
+    introspection. Input schemas require an authenticated tools/list call.
+tools_source: provider-published manual (names + descriptions only; no inputSchema published)
+tool_count: 16
+tools:
+- name: query_vuln_by_id
+  category: vulnerability
+  description: Look up vulnerability detail by CVE / CNNVD / CNVD identifier.
+- name: batch_query_vulns
+  category: vulnerability
+  description: Batch vulnerability lookup, up to 5 identifiers, with comparative threat
+    analysis.
+- name: query_vuln_list_by_keyword
+  category: vulnerability
+  description: Fuzzy keyword search across the vulnerability corpus by product or
+    component name.
+- name: query_vuln_list
+  category: vulnerability
+  description: Multi-criteria vulnerability search across 20+ dimensions (date, severity,
+    patch status, APT association, in-the-wild exploitation).
+- name: query_ip
+  category: reputation
+  description: Single-IP reputation assessment and attacker-group attribution.
+- name: batch_query_ips
+  category: reputation
+  description: Batch IP profiling, up to 5 addresses, with malicious-label clustering.
+- name: query_domain
+  category: reputation
+  description: Domain threat-label verification and resolution-record tracking.
+- name: batch_query_domains
+  category: reputation
+  description: Batch domain detection, up to 5 domains, with risk scoring.
+- name: query_hash
+  category: file
+  description: File-hash maliciousness verdict with sandbox behavioural analysis.
+- name: batch_query_hashes
+  category: file
+  description: Batch sample comparison, up to 5 hashes, with same-origin judgement.
+- name: query_ioc_graph
+  category: graph
+  description: IOC relationship-graph analysis across IP / domain / URL / hash.
+- name: query_domain_graph
+  category: graph
+  description: Domain attack-chain visualisation linking IPs, samples and APT activity.
+- name: query_ip_graph
+  category: graph
+  description: IP asset profiling and lateral-movement path analysis.
+- name: query_hash_graph
+  category: graph
+  description: Sample-hash relationship analysis exposing C2 infrastructure.
+- name: query_threat_actor_by_ioc
+  category: threat-actor
+  description: Retrieve threat-actor profile associated with a given IOC.
+- name: query_threat_actor_list
+  category: threat-actor
+  description: Multi-criteria threat-actor search (alias, org type, attack frequency,
+    targeted industry, suspected origin, last activity).
+clients_documented:
+- name: DeepChat
+  min_version: 0.0.15
+- name: Cherry Studio
+  min_version: 1.2.7
+- name: any MCP-capable client
+notes:
+- The provider publishes a recommended system prompt instructing models to prefer
+  MCP results over prior knowledge and to date-stamp answers.
+- No OpenAPI is published for the backing REST API, so no tool crosswalk (ToolCrosswalk)
+  could be derived — see conformance/qi-anxin-conformance.yml.

@@ -1,0 +1,40 @@
+generated: '2026-08-26'
+method: searched
+source: https://github.com/RedDrip7/qax-ti-mcp §五 安全认证说明 (安全增强措施), https://ti.qianxin.com/help;
+  live unauthenticated probe of https://webapi.ti.qianxin.com/ on 2026-08-26
+limit_count: 0
+limits: []
+note: 'QAX acknowledges that rate limiting exists but publishes no number. The MCP
+  configuration manual lists "访问控制及必要的频率限制" (access control and necessary
+  rate limiting) among its security measures without stating a window, a quota or
+  a burst allowance, and no per-key quota is documented on the REST help pages. An
+  honest zero: limits are enforced but undocumented.'
+enforcement_acknowledged: true
+enforcement_evidence:
+- url: https://github.com/RedDrip7/qax-ti-mcp
+  status: 200
+  quote: 访问控制及必要的频率限制
+  note: Provider states rate limiting is applied; no value given.
+response_headers:
+  documented: []
+  observed: []
+  note: 'No X-RateLimit-*, RateLimit-* or Retry-After header is documented, and none
+    could be observed: an unauthenticated request is rejected with 401 before any
+    quota accounting occurs, and the authenticated path requires a key issued by application
+    to ti_support@qianxin.com.'
+exhaustion_status_code: undocumented
+documented_caps:
+- surface: MCP batch tools
+  cap: 5 items per call
+  applies_to:
+  - batch_query_vulns
+  - batch_query_ips
+  - batch_query_hashes
+  - batch_query_domains
+  source: https://github.com/RedDrip7/qax-ti-mcp
+  note: A per-request payload cap, not a rate limit — recorded here because it is
+    the only published numeric throughput constraint.
+ip_allowlist:
+  offered: true
+  note: Optional IP allow-list binding on separate application; an access control,
+    not a rate limit.

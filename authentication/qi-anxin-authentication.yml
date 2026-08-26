@@ -1,0 +1,51 @@
+generated: '2026-08-26'
+method: searched
+source: https://ti.qianxin.com/help/?path=ip-illustration30 (QAX Threat Intelligence
+  Center API help) and https://github.com/RedDrip7/qax-ti-mcp §五 安全认证说明; corroborated
+  by an unauthenticated live probe of https://webapi.ti.qianxin.com/
+docs: https://ti.qianxin.com/help
+summary: 'Every QAX Threat Intelligence surface — the REST API and the hosted MCP
+  server — authenticates with a single static API key carried in an `Api-Key` request
+  header. There is no OAuth, no OIDC, no bearer/JWT and no mTLS on the public surface.'
+schemes:
+- id: ApiKeyHeader
+  type: apiKey
+  in: header
+  name: Api-Key
+  applies_to:
+  - https://webapi.ti.qianxin.com
+  - https://ti.qianxin.com/api/v2/compromise
+  - https://mcp.ti.qianxin.com/ti-stream-mcp
+  - https://mcp.ti.qianxin.com/ti-mcp/sse
+  description: Static per-account API key issued by the QAX Threat Intelligence Center
+    console.
+  example_request: "curl 'https://webapi.ti.qianxin.com/ip/v3/reputation?param=<indicator>'\
+    \ -H 'Api-Key: <your-key>'"
+key_issuance:
+  self_service: false
+  route: 'Register an account at https://user.ti.qianxin.com/login, then request API
+    access from the platform administrators at ti_support@qianxin.com.'
+  console: https://ti.qianxin.com/
+  note: The provider does not publish a self-service key-generation flow on a page
+    reachable without an account; MCP keys are explicitly issued by contacting ti_support@qianxin.com.
+key_management:
+  rotation_documented: false
+  ip_allowlist: 'Optional — IP allow-list binding is offered on separate application
+    (documented for the MCP service).'
+  scopes: false
+  scope_note: The API key is unscoped. No OAuth scope surface exists, so no scopes/
+    artifact is emitted.
+transport:
+  tls: required
+  observed_tls_version: TLSv1.2
+unauthenticated_behaviour:
+  probed: '2026-08-26'
+  url: https://webapi.ti.qianxin.com/
+  http_status: 401
+  content_type: application/json; charset=utf-8
+  body: '{"message":"No API key found in request"}'
+  note: A missing key returns a JSON 401 rather than an HTML error page — the API
+    host is genuinely an API host, not the JS-rendered SPA that fronts ti.qianxin.com.
+oauth2: false
+openid_connect: false
+mutual_tls: false

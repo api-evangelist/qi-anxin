@@ -1,0 +1,34 @@
+generated: '2026-08-26'
+method: probed
+source: live probe of https://sandbox.ti.qianxin.com/sandbox/page on 2026-08-26 (HTTP
+  200, text/html, 8,270 bytes — a real server-rendered page, not the ti.qianxin.com
+  SPA shell)
+name: QAX Intelligence Sandbox (奇安信情报沙箱)
+url: https://sandbox.ti.qianxin.com/sandbox/page
+type: malware-analysis-sandbox
+summary: 'QAX operates a hosted file-detonation sandbox under the Threat Intelligence
+  Center. A submitted sample is executed and profiled, and the resulting behavioural
+  report is the same analysis surfaced through the query_hash and query_hash_graph
+  MCP tools ("file-hash maliciousness verdict with sandbox behavioural analysis").'
+probe:
+  url: https://sandbox.ti.qianxin.com/sandbox/page
+  http_status: 200
+  content_type: text/html; charset=utf-8
+  size_bytes: 8270
+  date: '2026-08-26'
+  note: Distinct host and distinct rendering from ti.qianxin.com — this is a real
+    page, not the SPA catch-all.
+sandbox_kind: product-sandbox
+developer_test_environment:
+  published: false
+  note: 'IMPORTANT — this is a malware-analysis sandbox (a product), not an API test
+    environment. QAX publishes no test/live key modes, no test API keys, no fixture
+    or trigger tooling and no time-simulation controls for the threat-intelligence
+    API. There is one production key per account and no separate developer sandbox
+    tier.'
+test_credentials: none published
+test_values: none published
+key_modes: none published
+account_required: true
+account_note: Sample submission requires a QAX Threat Intelligence Center account
+  (https://user.ti.qianxin.com/login).

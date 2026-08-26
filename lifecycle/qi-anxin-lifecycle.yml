@@ -1,0 +1,51 @@
+generated: '2026-08-26'
+method: searched
+source: https://github.com/RedDrip7/qax-ti-mcp (versioned configuration manual with
+  a dated revision table and an explicit transport-deprecation notice); probes of
+  QAX hosts on 2026-08-26
+versioning:
+  api_versioning: uri-path
+  detail: Interface version appears as a path segment (/ip/v3/reputation, /api/v2/compromise)
+    and each interface is versioned independently.
+  policy_published: false
+  policy_note: No written API versioning policy page was found on a machine-readable
+    surface.
+deprecation:
+  policy_published: false
+  notices_published: true
+  sunset_header: not observed
+  deprecation_header: not observed
+  rfc8594: false
+  deprecated:
+  - item: QAX Threat Intelligence MCP — SSE transport
+    endpoint: https://mcp.ti.qianxin.com/ti-mcp/sse
+    status: deprecated
+    announced_in: 奇安信威胁情报MCP服务配置手册 v1.0.1 / v2.0.0
+    source: https://github.com/RedDrip7/qax-ti-mcp
+    statement: 'Published in the provider''s own protocol table as ✅支持-不再维护 —
+      supported but no longer maintained — with Streamable HTTP marked ✅优先推荐 (preferred).
+      Clients wanting SSE must state so when applying for an API key.'
+    replacement: https://mcp.ti.qianxin.com/ti-stream-mcp
+    sunset_date: null
+    sunset_note: No sunset date is stated. The notice names the successor transport
+      but not a removal date.
+  note: This is a real, provider-authored deprecation notice for a named endpoint
+    with a named replacement — not a general policy document. Recorded as such.
+status_page:
+  published: false
+  probed:
+  - url: https://status.qianxin.com/
+    status: '<not resolvable>'
+  note: No status page was found for the threat-intelligence surface. No StatusPage
+    pointer is emitted.
+sla:
+  published: false
+  note: No public SLA for the threat-intelligence API was found; commercial terms
+    are handled through ti_support@qianxin.com.
+support:
+  api_contact: ti_support@qianxin.com
+  general_support: https://www.qianxin.com/support/index
+  global_partner: GlobalPartner@qianxin.com
+  phone: +86 (10) 5783 6300
+release_history:
+  detail: See changelog/qi-anxin-changelog.yml

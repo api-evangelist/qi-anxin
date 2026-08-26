@@ -1,0 +1,117 @@
+generated: '2026-08-26'
+method: searched
+source: Live probes of every QAX host on 2026-08-26, https://github.com/RedDrip7/qax-ti-mcp,
+  https://ti.qianxin.com/help, and the QAX corporate pages
+standards:
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: 'QAX publishes a hosted MCP server at https://mcp.ti.qianxin.com/ti-stream-mcp
+    over the Streamable HTTP transport, documented in its own configuration manual
+    with 16 named tools and Mcp-Session-Id session tracking. Announced on the QAX newsroom
+    2025-05-13.'
+  note: Streamable HTTP supported and preferred; SSE supported but deprecated; stdio
+    explicitly not supported.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: 'No OpenAPI or Swagger document is served. Probed /openapi.json, /swagger.json,
+    /openapi.yaml, /v1/openapi.json, /api-docs, /docs and /redoc against www.qianxin.com,
+    en.qianxin.com, ti.qianxin.com and webapi.ti.qianxin.com — www./en. return 404,
+    ti. returns the SPA catch-all shell for every path, webapi. returns 401 JSON.'
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: No /graphql surface is documented or discoverable on any QAX host.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: 'No AsyncAPI document and no public event/webhook surface. The threat-intelligence
+    product does publish streaming intelligence feeds to customers, but no public
+    event contract or webhook catalog is published, so no asyncapi/ artifact is written.'
+- id: grpc
+  name: gRPC / Protobuf
+  conforms: false
+  evidence: No .proto files found on the RedDrip7 GitHub account, buf.build, or the
+    QAX docs.
+- id: wsdl
+  name: WSDL / SOAP
+  conforms: false
+  evidence: No ?wsdl or ?singleWsdl surface found on webapi.ti.qianxin.com or ti.qianxin.com.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: The public surface authenticates with a static `Api-Key` header only.
+    No authorization server metadata is served.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on www.qianxin.com and en.qianxin.com,
+    and the SPA shell on ti.qianxin.com.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: 'Observed failure body is {"message":"No API key found in request"} with
+    content-type application/json, not application/problem+json.'
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: No /.well-known/security.txt on any host — see well-known/qi-anxin-well-known.yml.
+- id: rfc8594
+  name: RFC 8594 Sunset header
+  conforms: false
+  evidence: No Sunset or Deprecation header observed. The SSE transport deprecation
+    is announced in prose in the configuration manual, not signalled in HTTP.
+- id: idempotency
+  name: Idempotency keys
+  conforms: na
+  evidence: The public surface is read-only (HTTP GET lookups and query_* MCP tools);
+    there is no write operation for an idempotency key to protect.
+- id: pagination
+  name: Pagination
+  conforms: false
+  evidence: Not documented on the public REST surface; batch MCP tools are capped
+    at 5 items rather than paginated.
+domain_standards:
+- id: cve
+  name: CVE (Common Vulnerabilities and Exposures)
+  conforms: true
+  evidence: 'The published MCP tool query_vuln_by_id accepts a CVE identifier as its
+    lookup key ("通过CVE/CNNVD/CNVD编号查询漏洞详情"), and query_vuln_list filters
+    on CVE-keyed dimensions. Documented at https://github.com/RedDrip7/qax-ti-mcp.'
+  note: The contract itself speaks CVE identifiers — a consumer already holding a
+    CVE integrates with no bespoke mapping.
+- id: cnnvd
+  name: CNNVD (China National Vulnerability Database of Information Security)
+  conforms: true
+  evidence: query_vuln_by_id accepts CNNVD identifiers directly, per the provider's
+    published tool description.
+- id: cnvd
+  name: CNVD (China National Vulnerability Database)
+  conforms: true
+  evidence: query_vuln_by_id accepts CNVD identifiers directly, per the provider's
+    published tool description.
+- id: mitre-attack
+  name: MITRE ATT&CK
+  conforms: true
+  evidence: 'The threat-actor profile surface is documented as returning "IOC、漏洞CVE、报告链接、ATT&CK战术、动机、技战法"
+    — ATT&CK tactics are a named field of the threat-actor response. Source: https://github.com/RedDrip7/qax-ti-mcp
+    §六.'
+  note: Reward-only check — the threat-intelligence market''s domain vocabulary (CVE,
+    ATT&CK) is declared by the contract''s own tool surface, not merely claimed in
+    marketing prose.
+- id: stix-taxii
+  name: STIX / TAXII
+  conforms: false
+  evidence: No STIX bundle or TAXII 2.x collection endpoint is documented on the public
+    surface. Intelligence is returned as vendor-shaped JSON.
+  note: 'The most consequential gap for this provider: STIX/TAXII is the interchange
+    standard of its own market, and a buyer already running a TAXII client needs a
+    bespoke connector for QAX where a competitor publishing TAXII would need none.'
+compliance:
+  certifications_published: false
+  note: 'No trust center or named certification page (SOC 2, ISO 27001, PCI, FedRAMP)
+    was found on a public QAX surface reachable to this probe. QAX publishes a Statement
+    of Compliance PDF and a Privacy Policy PDF from en.qianxin.com, and cites IDC
+    market-share ranking and Gartner recognition, but neither is a certification attestation.
+    No Compliance or TrustCenter pointer is emitted.'

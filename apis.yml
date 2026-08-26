@@ -1,18 +1,68 @@
 aid: qi-anxin
 name: Qi Anxin
-description: 'Qi Anxin is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Qi An Xin Technology Group (QAX, 奇安信) is a Beijing-headquartered cybersecurity vendor founded
+  in 2014 and listed on the Shanghai Stock Exchange STAR Market (688561), with more than 10,000 employees
+  across 65 branches. It builds enterprise- and national-scale security products spanning security operations
+  and response (SIEM, NDR, vulnerability management), threat intelligence (TIP, TIOS, cyberspace mapping),
+  network and perimeter security (NGFW, WAF, SD-WAN, secure web gateway), endpoint and identity security
+  (EDR, zero-trust network access, privileged access management) and digital forensics. Its public developer
+  surface is the QAX Threat Intelligence Center (ti.qianxin.com): an Api-Key authenticated REST reputation
+  and intelligence API on webapi.ti.qianxin.com, and a hosted Model Context Protocol server at mcp.ti.qianxin.com
+  that exposes sixteen threat-intelligence query tools to AI clients. QAX also operates the Butian (补天)
+  vulnerability response platform and was the official cybersecurity services sponsor of the Beijing 2022
+  Olympic and Paralympic Winter Games.'
+image: https://en.qianxin.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/qi-anxin/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
-apis: []
+- Security
+- Cybersecurity
+- Threat Intelligence
+- Endpoint Security
+- Network Security
+- Vulnerability Management
+- Model Context Protocol
+- China
+apis:
+- name: QAX Threat Intelligence API
+  description: 'REST threat-intelligence API from the QAX Threat Intelligence Center. Provides IP reputation,
+    domain and URL reputation, file/hash verdicts, compromise (失陷) detection intelligence and vulnerability
+    intelligence. Requests are HTTP GET with the indicator supplied as the `param` query string, authenticated
+    with an `Api-Key` request header, returning JSON. Probed unauthenticated: the API host answers 401
+    application/json with {"message":"No API key found in request"}.'
+  humanURL: https://ti.qianxin.com/help
+  baseURL: https://webapi.ti.qianxin.com
+  tags:
+  - Threat Intelligence
+  - Security
+  - Reputation
+  properties:
+  - type: Authentication
+    url: authentication/qi-anxin-authentication.yml
+  - type: ErrorCatalog
+    url: errors/qi-anxin-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/qi-anxin-rate-limits.yml
+- name: QAX Threat Intelligence MCP Service
+  description: Hosted Model Context Protocol server published by the QAX Threat Intelligence Center, announced
+    on the QAX newsroom 2025-05-13. Exposes sixteen threat-intelligence query tools (vulnerability lookup,
+    IP/domain/hash reputation, IOC and attack graphs, threat-actor profiles, batch variants) to any MCP-capable
+    AI client over Streamable HTTP, authenticated with an `Api-Key` header. The SSE transport is published
+    as deprecated and no longer maintained.
+  humanURL: https://github.com/RedDrip7/qax-ti-mcp
+  baseURL: https://mcp.ti.qianxin.com/ti-stream-mcp
+  tags:
+  - Model Context Protocol
+  - Threat Intelligence
+  - AI
+  properties:
+  - type: MCPServer
+    url: mcp/qi-anxin-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +70,53 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/qi-anxin_stock/
+  url: https://www.qianxin.com/
+- type: DomainSecurity
+  url: security/qi-anxin-domain-security.yml
+- type: Documentation
+  url: https://ti.qianxin.com/help
+- type: APIReference
+  url: https://ti.qianxin.com/help/?path=ip-illustration30
+- type: DeveloperPortal
+  url: https://ti.qianxin.com/
+- type: SignUp
+  url: https://user.ti.qianxin.com/login
+- type: Support
+  url: https://www.qianxin.com/support/index
+- type: Blog
+  url: https://en.qianxin.com/news/list
+- type: MCPServer
+  url: mcp/qi-anxin-mcp.yml
+- type: Authentication
+  url: authentication/qi-anxin-authentication.yml
+- type: Sandbox
+  url: sandbox/qi-anxin-sandbox.yml
+- type: ChangeLog
+  url: changelog/qi-anxin-changelog.yml
+- type: Lifecycle
+  url: lifecycle/qi-anxin-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/qi-anxin-lifecycle.yml
+- type: Conventions
+  url: conventions/qi-anxin-conventions.yml
+- type: ErrorCatalog
+  url: errors/qi-anxin-problem-types.yml
+- type: Conformance
+  url: conformance/qi-anxin-conformance.yml
+- type: Plans
+  url: plans/qi-anxin-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/qi-anxin-rate-limits.yml
+- type: Packages
+  url: packages/qi-anxin-packages.yml
+- type: LLMsTxt
+  url: llms/qi-anxin-llms.txt
+- type: VulnerabilityDisclosure
+  url: security/qi-anxin-vulnerability-disclosure.yml
+- type: Security
+  url: security/qi-anxin-vulnerability-disclosure.yml
+x-enrichment:
+  date: '2026-08-26'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

@@ -1,0 +1,104 @@
+generated: '2026-08-26'
+method: probed
+source: live GET probes on 2026-08-26 of every apis.yml host
+summary: 'No /.well-known document is served on any QAX host. www.qianxin.com and
+  en.qianxin.com return real 404s. ti.qianxin.com is a Vue single-page application
+  (container-ti-alpha) whose catch-all answers HTTP 200 with an identical 1,647-byte
+  HTML shell for every path — including paths that cannot exist — so its 200s are
+  recorded as MISSES, not documents. No WellKnown or SecurityTxt pointer is emitted.'
+hosts:
+- host: www.qianxin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: '<no response>'
+    file: null
+    note: Connection timed out after 10s; single attempt, not retried.
+  - path: /.well-known/api-catalog
+    status: '<no response>'
+    file: null
+    note: Connection timed out after 10s; single attempt, not retried.
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: en.qianxin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: ti.qianxin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    note: SPA shell (text/html, 1647 bytes) — not a document. Recorded as a miss.
+- host: mcp.ti.qianxin.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: '<no response>'
+    file: null
+    note: Connection timed out after 10s from the probing network; single attempt,
+      not retried. The MCP service authenticates with a static Api-Key header, not
+      OAuth, so no authorization-server metadata is expected.
+  - path: /.well-known/oauth-protected-resource
+    status: '<no response>'
+    file: null
+    note: Connection timed out after 10s; single attempt, not retried.
+a2a_agent_card: none
+a2a_note: 'No A2A Agent Card was found on any host. Every ti.qianxin.com 200 is the
+  SPA catch-all shell and was rejected; www.qianxin.com and en.qianxin.com return
+  404 on both the canonical and legacy paths. Per pipeline rules no a2a/ artifact
+  is written.'

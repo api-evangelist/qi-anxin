@@ -1,0 +1,32 @@
+generated: '2026-08-26'
+method: searched
+source: 'Searched the QAX Threat Intelligence Center (https://ti.qianxin.com/), its
+  help section (https://ti.qianxin.com/help), the QAX product pages (https://www.qianxin.com/product/detail/pid/390,
+  /pid/487) and the MCP configuration manual (https://github.com/RedDrip7/qax-ti-mcp)
+  on 2026-08-26. No pricing, tier, quota or free-allowance page was found on any public
+  surface.'
+plan_count: 0
+model: contact-sales
+currency: null
+plans: []
+note: 'QAX publishes no plans, tiers or list pricing for the Threat Intelligence API
+  or the MCP service. Access is arranged by contacting the platform administrators
+  at ti_support@qianxin.com, who issue the API key; the MCP launch announcement on
+  the QAX newsroom (2025-05-13) invites users to apply for trial access and discloses
+  neither pricing nor a free quota. This is a recorded absence, not an unchecked field.'
+evidence:
+- url: https://ti.qianxin.com/
+  status: 200
+  note: JS-rendered SPA; no pricing route found.
+- url: https://www.qianxin.com/news/detail?news_id=13436
+  status: 200
+  note: 'Official MCP launch post: "contact ti_support@qianxin.com to apply for trial
+    access"; no pricing or free quota disclosed.'
+- url: https://github.com/RedDrip7/qax-ti-mcp
+  status: 200
+  note: Provider configuration manual; key issuance is by email application, no tiers
+    described.
+free_tier:
+  offered: unknown
+  note: A trial is referenced in the launch announcement but its terms, duration and
+    quota are not published.
