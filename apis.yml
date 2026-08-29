@@ -11,6 +11,17 @@ description: 'Qi An Xin Technology Group (QAX, 奇安信) is a Beijing-headquart
   that exposes sixteen threat-intelligence query tools to AI clients. QAX also operates the Butian (补天)
   vulnerability response platform and was the official cybersecurity services sponsor of the Beijing 2022
   Olympic and Paralympic Winter Games.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://en.qianxin.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/qi-anxin/refs/heads/main/apis.yml
 x-type: company
