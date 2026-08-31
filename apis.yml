@@ -37,6 +37,16 @@ tags:
 - Endpoint Security
 - Network Security
 - Vulnerability Management
+- MCP
+- China
+tags_raw:
+- Company
+- Security
+- Cybersecurity
+- Threat Intelligence
+- Endpoint Security
+- Network Security
+- Vulnerability Management
 - Model Context Protocol
 - China
 apis:
@@ -68,6 +78,10 @@ apis:
   humanURL: https://github.com/RedDrip7/qax-ti-mcp
   baseURL: https://mcp.ti.qianxin.com/ti-stream-mcp
   tags:
+  - MCP
+  - Threat Intelligence
+  - Artificial Intelligence
+  tags_raw:
   - Model Context Protocol
   - Threat Intelligence
   - AI
