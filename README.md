@@ -64,5 +64,111 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Qi Anxin is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/qi-anxin_stock/
+Qi An Xin Technology Group (QAX, 奇安信) is a Beijing-headquartered cybersecurity vendor founded in 2014 and listed on the Shanghai Stock Exchange STAR Market (688561), with more than 10,000 employees across 65 branches. It builds enterprise- and national-scale security products spanning security operations and response (SIEM, NDR, vulnerability management), threat intelligence (TIP, TIOS, cyberspace mapping), network and perimeter security (NGFW, WAF, SD-WAN, secure web gateway), endpoint and identity security (EDR, zero-trust network access, privileged access management) and digital forensics. Its public developer surface is the QAX Threat Intelligence Center (ti.qianxin.com): an Api-Key authenticated REST reputation and intelligence API on webapi.ti.qianxin.com, and a hosted Model Context Protocol server at mcp.ti.qianxin.com that exposes sixteen threat-intelligence query tools to AI clients. QAX also operates the Butian (补天) vulnerability response platform and was the official cybersecurity services sponsor of the Beijing 2022 Olympic and Paralympic Winter Games.
+
+**Areas:** Company · Security · Cybersecurity · Threat Intelligence · Endpoint Security · Network Security · Vulnerability Management · MCP · China
+
+## Qi Anxin on APIs.io
+
+Everything profiled for Qi Anxin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/qi-anxin/](https://apis.io/providers/qi-anxin/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [QAX Threat Intelligence API](https://apis.io/apis/qi-anxin/qax-threat-intelligence-api/) — REST threat-intelligence API from the QAX Threat Intelligence Center. Provides IP reputation, domain and URL reputation, file/hash verdicts, compromise (失陷)…
+- [QAX Threat Intelligence MCP Service](https://apis.io/apis/qi-anxin/qax-threat-intelligence-mcp-service/) — Hosted Model Context Protocol server published by the QAX Threat Intelligence Center, announced on the QAX newsroom 2025-05-13. Exposes sixteen…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [QAX Threat Intelligence MCP Service](https://apis.io/servers/qi-anxin/qax-threat-intelligence-mcp-service/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Qi Anxin Authentication](https://apis.io/security/qi-anxin/qi-anxin-authentication/)
+- [Qi Anxin Domain Security](https://apis.io/security/qi-anxin/qi-anxin-domain-security/)
+- [Qi Anxin Vulnerability Disclosure](https://apis.io/security/qi-anxin/qi-anxin-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Qi Anxin Plans Pricing](https://apis.io/plans/qi-anxin/qi-anxin-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Qi Anxin Rate Limits](https://apis.io/rate-limits/qi-anxin/qi-anxin-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.qianxin.com/)
+- [Documentation](https://ti.qianxin.com/help)
+- [API reference](https://ti.qianxin.com/help/?path=ip-illustration30)
+- [Sign up](https://user.ti.qianxin.com/login)
+- [Support](https://www.qianxin.com/support/index)
+- [Blog](https://en.qianxin.com/news/list)
+
+## API Evangelist rating
+
+**Kin Score 19.8** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 0.0 |
+
+**Agent readiness 11.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/qi-anxin/](https://apis.io/providers/qi-anxin/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Qi Anxin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/qi-anxin/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
